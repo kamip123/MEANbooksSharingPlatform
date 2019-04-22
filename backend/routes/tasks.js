@@ -11,7 +11,7 @@ const ObjectId = require("mongodb").ObjectID;
 router.post('/books', function(req, res, next){
     client.connect(err => {
         let collection = client.db("MEANsharingPlatform").collection("Books");
-        collection.insert(req.body, (error, result) => {
+        collection.insertOne(req.body, (error, result) => {
             if(error) {
                 return res.status(500).send(error);
             }

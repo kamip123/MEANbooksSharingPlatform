@@ -1,6 +1,8 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-
+import { HttpClientModule } from '@angular/common/http';
+import { HttpClientXsrfModule } from '@angular/common/http';
+import { HttpErrorHandler } from './http-error-handler.service';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
@@ -13,6 +15,7 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { FooterComponent } from './footer/footer.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule} from '@angular/forms';
+
 import {
   MatButtonModule,
   MatCardModule,
@@ -22,8 +25,10 @@ import {
   MatSelectModule,
   MatToolbarModule
 } from '@angular/material';
+
 import { FlexLayoutModule } from '@angular/flex-layout';
-import {LayoutModule} from '@angular/cdk/layout';
+import { LayoutModule } from '@angular/cdk/layout';
+import {MessageService} from './message.service';
 
 @NgModule({
   declarations: [
@@ -50,9 +55,13 @@ import {LayoutModule} from '@angular/cdk/layout';
     MatFormFieldModule,
     MatInputModule,
     FormsModule,
-    LayoutModule
+    LayoutModule,
+    HttpClientModule
   ],
-  providers: [],
+  providers: [
+    HttpErrorHandler,
+    MessageService,
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -1,44 +1,65 @@
 <div fxLayout="row wrap" fxLayoutAlign="space-around center" fxLayoutGap="16px grid">
 
-  <div fxFlex="55">
-
-      <mat-card>
-        <mat-card-title>
-          Your imagination start here!
-        </mat-card-title>
-        <mat-card-subtitle>
-          You can share your creations here or look for other people stuff.
-        </mat-card-subtitle>
-      </mat-card>
-
-  </div>
-
-  <div fxFlex="55">
-    <div fxLayout="row wrap" fxLayoutAlign="space-around center">
-      <mat-card fxFlex="100">
-        <mat-form-field style="width: 100%">
-          <textarea matInput placeholder="Leave a comment" style="width: 100%" [(ngModel)]="newPost"></textarea>
-        </mat-form-field>
-      </mat-card>
-      <div fxFlex="100">
-        <div fxLayout="row wrap" fxLayoutAlign="space-around center">
-        <button type='button' mat-raised-button color="primary" (click)="sendComment(comment)">Submit</button>
+  <div fxFlex="60">
+    <mat-card>
+      <div style="padding: 10px;" fxLayout="row wrap" fxLayoutAlign="space-around center" fxLayoutGap="16px grid">
+        <div fxFlex="50">
+          <div fxLayout="column wrap" fxLayoutAlign="space-around center" fxLayoutGap="16px grid">
+            <p class="mat-display-3" fxFlex="50">
+              Your imagination start here!
+            </p>
+            <p class="mat-display-1" fxFlex="50">
+              You can share your creations here or look for other people stuff.
+            </p>
+          </div>
+        </div>
+        <img fxFlex="50" class="mainPageDevice" mat-card-lg-image src="assets/mainPageDevices.png">
+        <div fxFlex="100" class="p-4">
+          <div fxLayout="row wrap" fxLayoutAlign="space-around center" fxLayoutGap="16px grid">
+            <button fxFlex="10" mat-raised-button color="accent">Start</button>
+            <button fxFlex="10" mat-raised-button color="accent">FB</button>
+            <button fxFlex="10" mat-raised-button color="accent">TW</button>
+          </div>
         </div>
       </div>
-      <div fxFlex="100">
-        <p>{{newPost}}</p>
-      </div>
-    </div>
-
-  </div>
-  <div fxFlex="50">
-
+    </mat-card>
   </div>
 </div>
 
 <div fxLayout="row wrap" fxLayoutAlign="space-around center">
 
-  <mat-card fxFlex="60" *ngFor="let book of topAllTime">
+  <mat-card fxFlex="60">
+    <form class="example-form">
+      <mat-form-field class="example-full-width">
+        <input #title matInput placeholder="title">
+      </mat-form-field>
+
+      <mat-form-field class="example-full-width">
+        <input #author matInput placeholder="author">
+      </mat-form-field>
+
+      <mat-form-field class="example-full-width">
+        <input #chapters type="number" matInput placeholder="chapters">
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-label>Status</mat-label>
+        <mat-select #status>
+          <mat-option *ngFor="let status of statuses" [value]="status.value">
+            {{status.viewValue}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <button mat-raised-button color="primary" (click)="add(title.value, author.value, chapters.valueAsNumber, status.value)">Submit</button>
+    </form>
+  </mat-card>
+
+</div>
+
+<div fxLayout="row wrap" fxLayoutAlign="space-around center">
+
+  <mat-card fxFlex="60" *ngFor="let book of books">
     <mat-card-title>
       {{book.title}}
     </mat-card-title>
