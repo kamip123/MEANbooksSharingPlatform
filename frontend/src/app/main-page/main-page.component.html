@@ -1,0 +1,51 @@
+<div fxLayout="row wrap" fxLayoutAlign="space-around center" fxLayoutGap="16px grid">
+
+  <div fxFlex="55">
+
+      <mat-card>
+        <mat-card-title>
+          Your imagination start here!
+        </mat-card-title>
+        <mat-card-subtitle>
+          You can share your creations here or look for other people stuff.
+        </mat-card-subtitle>
+      </mat-card>
+
+  </div>
+
+  <div fxFlex="55">
+    <div fxLayout="row wrap" fxLayoutAlign="space-around center">
+      <mat-card fxFlex="100">
+        <mat-form-field style="width: 100%">
+          <textarea matInput placeholder="Leave a comment" style="width: 100%" [(ngModel)]="newPost"></textarea>
+        </mat-form-field>
+      </mat-card>
+      <div fxFlex="100">
+        <div fxLayout="row wrap" fxLayoutAlign="space-around center">
+        <button type='button' mat-raised-button color="primary" (click)="sendComment(comment)">Submit</button>
+        </div>
+      </div>
+      <div fxFlex="100">
+        <p>{{newPost}}</p>
+      </div>
+    </div>
+
+  </div>
+  <div fxFlex="50">
+
+  </div>
+</div>
+
+<div fxLayout="row wrap" fxLayoutAlign="space-around center">
+
+  <mat-card fxFlex="60" *ngFor="let book of topAllTime">
+    <mat-card-title>
+      {{book.title}}
+    </mat-card-title>
+    <mat-card-subtitle>
+      {{book.author}}
+    </mat-card-subtitle>
+    <p>Chapters: {{book.chapters}} Status: {{book.status}}</p>
+  </mat-card>
+
+</div>

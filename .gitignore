@@ -1,0 +1,25 @@
+# See http://help.github.com/ignore-files/ for more about ignoring files.
+
+# compiled output
+dist/
+tmp/
+out-tsc/
+bazel-out/
+
+# dependencies
+node_modules/
+
+# profiling files
+frontend/chrome-profiler-events.json
+frontend/speed-measure-plugin.json
+
+# IDEs and editors
+*.idea
+*.project
+*.classpath
+*.c9/
+*.launch
+*.settings/
+*.sublime-workspace
+
+backend/routes/uriString.js
