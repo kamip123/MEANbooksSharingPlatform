@@ -12,3 +12,14 @@
 .example-full-width {
   width: 100%;
 }
+
+button.delete {
+  position: relative;
+  left: 24em;
+  top: -32px;
+  background-color: gray !important;
+  color: white;
+  display: inherit;
+  padding: 5px 8px;
+  width: 2em;
+}

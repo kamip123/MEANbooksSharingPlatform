@@ -17,7 +17,7 @@ const httpOptions = {
 
 @Injectable()
 export class BooksService {
-  booksUrl = 'api/books';
+  booksUrl = 'http://localhost:3000/api/books';
   private handleError: HandleError;
 
   constructor(
@@ -42,8 +42,6 @@ export class BooksService {
       );
   }
   addBook(book: Book): Observable<Book> {
-    console.log('add book');
-    console.log(this.http.post<Book>(this.booksUrl, book, httpOptions));
     return this.http.post<Book>(this.booksUrl, book, httpOptions)
       .pipe(
         catchError(this.handleError('addBook', book))

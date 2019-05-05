@@ -15,7 +15,7 @@ router.post('/books', function(req, res, next){
             if(error) {
                 return res.status(500).send(error);
             }
-            res.send(result);
+            res.send(req.body);
         });
     });
 });

@@ -38,18 +38,19 @@ export class MainPageComponent implements OnInit {
     this.editBook = undefined;
     title = title.trim();
     author = author.trim();
-    status = status.trim();
-    // if (!title) { return; }
-    // if (!author) { return; }
-    // if (!chapters) { return; }
-    // if (!status) { return; }
+    if (!title) { return; }
+    if (!author) { return; }
+    if (!chapters) { return; }
+    if (!status) { return; }
     const newBook: Book = { title, author, chapters, status } as Book;
-    this.booksService.addBook(newBook).subscribe(book => this.books.push(book));
+    this.booksService.addBook(newBook).subscribe(book => {
+      this.books.push(book);
+    });
   }
 
   delete(book: Book): void {
     this.books = this.books.filter(b => b !== book);
-    this.booksService.deleteBook(book.id).subscribe();
+    this.booksService.deleteBook(book._id).subscribe();
   }
 
   edit(book) {
@@ -68,7 +69,7 @@ export class MainPageComponent implements OnInit {
     if (this.editBook) {
       this.booksService.updateBook(this.editBook)
         .subscribe(book => {
-          const ix = book ? this.books.findIndex(b => b.id === book.id) : -1;
+          const ix = book ? this.books.findIndex(b => b._id === book._id) : -1;
           if (ix > -1) { this.books[ix] = book; }
         });
       this.editBook = undefined;

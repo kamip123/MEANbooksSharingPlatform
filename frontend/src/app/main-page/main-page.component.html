@@ -1,7 +1,6 @@
-<div fxLayout="row wrap" fxLayoutAlign="space-around center" fxLayoutGap="16px grid">
-
+<div fxLayout="row wrap" fxLayoutAlign="space-around center">
   <div fxFlex="60">
-    <mat-card>
+    <mat-card style="margin: 12px;">
       <div style="padding: 10px;" fxLayout="row wrap" fxLayoutAlign="space-around center" fxLayoutGap="16px grid">
         <div fxFlex="50">
           <div fxLayout="column wrap" fxLayoutAlign="space-around center" fxLayoutGap="16px grid">
@@ -15,10 +14,10 @@
         </div>
         <img fxFlex="50" class="mainPageDevice" mat-card-lg-image src="assets/mainPageDevices.png">
         <div fxFlex="100" class="p-4">
-          <div fxLayout="row wrap" fxLayoutAlign="space-around center" fxLayoutGap="16px grid">
-            <button fxFlex="10" mat-raised-button color="accent">Start</button>
-            <button fxFlex="10" mat-raised-button color="accent">FB</button>
-            <button fxFlex="10" mat-raised-button color="accent">TW</button>
+          <div fxLayout="row wrap" fxLayoutAlign="space-around center">
+            <button fxFlex="10" mat-raised-button style="background-color: azure; color: black;">Register</button>
+            <button fxFlex="10" mat-raised-button style="background-color: blue; color: white;">FB</button>
+            <button fxFlex="10" mat-raised-button style="background-color: lightskyblue; color: black;">TW</button>
           </div>
         </div>
       </div>
@@ -27,46 +26,51 @@
 </div>
 
 <div fxLayout="row wrap" fxLayoutAlign="space-around center">
+  <div fxFlex="60">
+    <mat-card style="margin: 12px;">
+      <form class="example-form">
+        <mat-form-field class="example-full-width">
+          <input #title matInput placeholder="title">
+        </mat-form-field>
 
-  <mat-card fxFlex="60">
-    <form class="example-form">
-      <mat-form-field class="example-full-width">
-        <input #title matInput placeholder="title">
-      </mat-form-field>
+        <mat-form-field class="example-full-width">
+          <input #author matInput placeholder="author">
+        </mat-form-field>
 
-      <mat-form-field class="example-full-width">
-        <input #author matInput placeholder="author">
-      </mat-form-field>
+        <mat-form-field class="example-full-width">
+          <input #chapters type="number" matInput placeholder="chapters">
+        </mat-form-field>
 
-      <mat-form-field class="example-full-width">
-        <input #chapters type="number" matInput placeholder="chapters">
-      </mat-form-field>
-
-      <mat-form-field>
-        <mat-label>Status</mat-label>
-        <mat-select #status>
-          <mat-option *ngFor="let status of statuses" [value]="status.value">
-            {{status.viewValue}}
-          </mat-option>
-        </mat-select>
-      </mat-form-field>
-
-      <button mat-raised-button color="primary" (click)="add(title.value, author.value, chapters.valueAsNumber, status.value)">Submit</button>
-    </form>
-  </mat-card>
-
+        <mat-form-field>
+          <mat-label>Status</mat-label>
+          <mat-select #status>
+            <mat-option *ngFor="let status of statuses" [value]="status.value">
+              {{status.viewValue}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+        <div>
+          <button mat-raised-button color="primary"
+                  (click)="add(title.value, author.value, chapters.valueAsNumber, status.value)">Submit
+          </button>
+        </div>
+      </form>
+    </mat-card>
+  </div>
 </div>
 
 <div fxLayout="row wrap" fxLayoutAlign="space-around center">
 
-  <mat-card fxFlex="60" *ngFor="let book of books">
+  <mat-card fxFlex="60" style="margin: 10px;" *ngFor="let book of books">
     <mat-card-title>
       {{book.title}}
     </mat-card-title>
     <mat-card-subtitle>
-      {{book.author}}
+      By {{book.author}}
     </mat-card-subtitle>
-    <p>Chapters: {{book.chapters}} Status: {{book.status}}</p>
+    <p>Chapters: {{book.chapters}}</p>
+    <p>Status: {{book.status}}</p>
+    <p><button class="delete" title="delete book" (click)="delete(book)">x</button></p>
   </mat-card>
 
 </div>
